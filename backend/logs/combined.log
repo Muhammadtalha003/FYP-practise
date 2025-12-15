@@ -1,0 +1,28 @@
+2025-12-15 15:33:50 [INFO]: 🚀 Server running on port 5000
+2025-12-15 15:33:50 [INFO]: 📍 Environment: development
+2025-12-15 15:37:36 [INFO]: 🚀 Server running on port 5000
+2025-12-15 15:37:36 [INFO]: 📍 Environment: development
+2025-12-15 15:39:50 [INFO]: ::1 - - [15/Dec/2025:10:39:50 +0000] "POST /api/auth/hec/login HTTP/1.1" 401 49 "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0"
+2025-12-15 15:40:12 [INFO]: ::1 - - [15/Dec/2025:10:40:12 +0000] "POST /api/auth/hec/login HTTP/1.1" 401 49 "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0"
+2025-12-15 15:40:19 [INFO]: ::1 - - [15/Dec/2025:10:40:19 +0000] "POST /api/auth/hec/login HTTP/1.1" 401 49 "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0"
+2025-12-15 15:40:39 [INFO]: ::1 - - [15/Dec/2025:10:40:39 +0000] "POST /api/auth/university/login HTTP/1.1" 401 49 "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0"
+2025-12-15 15:42:14 [INFO]: 🚀 Server running on port 5000
+2025-12-15 15:42:14 [INFO]: 📍 Environment: development
+2025-12-15 15:42:24 [INFO]: 🚀 Server running on port 5000
+2025-12-15 15:42:24 [INFO]: 📍 Environment: development
+2025-12-15 15:42:25 [INFO]: 🚀 Server running on port 5000
+2025-12-15 15:42:25 [INFO]: 📍 Environment: development
+2025-12-15 15:42:36 [INFO]: HEC user logged in: admin@hec.edu.pk
+2025-12-15 15:42:36 [INFO]: ::1 - - [15/Dec/2025:10:42:36 +0000] "POST /api/auth/hec/login HTTP/1.1" 200 474 "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0"
+2025-12-15 16:08:24 [INFO]: 🚀 Server running on port 5000
+2025-12-15 16:08:24 [INFO]: 📍 Environment: development
+2025-12-15 16:09:14 [INFO]: HEC user logged in: admin@hec.edu.pk
+2025-12-15 16:09:14 [INFO]: ::1 - - [15/Dec/2025:11:09:14 +0000] "POST /api/auth/hec/login HTTP/1.1" 200 474 "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0"
+2025-12-15 16:11:18 [INFO]: ::1 - - [15/Dec/2025:11:11:18 +0000] "GET /api/auth/verify HTTP/1.1" 200 185 "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0"
+2025-12-15 16:11:18 [INFO]: ::1 - - [15/Dec/2025:11:11:18 +0000] "GET /api/auth/verify HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0"
+2025-12-15 16:14:36 [INFO]: University user logged in: vc@pu.edu.pk from UNI_0001
+2025-12-15 16:14:36 [INFO]: ::1 - - [15/Dec/2025:11:14:36 +0000] "POST /api/auth/university/login HTTP/1.1" 200 722 "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0"
+2025-12-15 16:16:07 [INFO]: ::1 - - [15/Dec/2025:11:16:07 +0000] "GET /api/auth/verify HTTP/1.1" 200 316 "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0"
+2025-12-15 16:16:07 [INFO]: ::1 - - [15/Dec/2025:11:16:07 +0000] "GET /api/auth/verify HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0"
+2025-12-15 16:16:22 [INFO]: ::1 - - [15/Dec/2025:11:16:22 +0000] "POST /api/auth/hec/login HTTP/1.1" 401 49 "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0"
+2025-12-15 16:16:25 [INFO]: ::1 - - [15/Dec/2025:11:16:25 +0000] "POST /api/auth/hec/login HTTP/1.1" 401 49 "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0"
