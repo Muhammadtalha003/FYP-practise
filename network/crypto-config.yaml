@@ -1,0 +1,54 @@
+# Copyright IBM Corp. All Rights Reserved.
+# SPDX-License-Identifier: Apache-2.0
+
+################################################################################
+#   HEC University Network - Crypto Config
+#   Certificate Authority and Crypto Material Generation
+################################################################################
+
+OrdererOrgs:
+  - Name: Orderer
+    Domain: hec.edu.pk
+    EnableNodeOUs: true
+    Specs:
+      - Hostname: orderer
+        SANS:
+          - localhost
+          - 127.0.0.1
+
+PeerOrgs:
+  # Higher Education Commission (HEC)
+  - Name: HEC
+    Domain: hec.edu.pk
+    EnableNodeOUs: true
+    Template:
+      Count: 2
+      SANS:
+        - localhost
+        - 127.0.0.1
+    Users:
+      Count: 3
+
+  # Punjab University
+  - Name: PunjabUniversity
+    Domain: pu.edu.pk
+    EnableNodeOUs: true
+    Template:
+      Count: 2
+      SANS:
+        - localhost
+        - 127.0.0.1
+    Users:
+      Count: 3
+
+  # LUMS - Lahore University of Management Sciences
+  - Name: LUMS
+    Domain: lums.edu.pk
+    EnableNodeOUs: true
+    Template:
+      Count: 2
+      SANS:
+        - localhost
+        - 127.0.0.1
+    Users:
+      Count: 3

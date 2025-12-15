@@ -1,0 +1,217 @@
+# Copyright IBM Corp. All Rights Reserved.
+# SPDX-License-Identifier: Apache-2.0
+
+################################################################################
+#   HEC University Degree Verification Network
+#   Network Configuration for Hyperledger Fabric 2.x
+################################################################################
+
+---
+################################################################################
+#   ORGANIZATIONS
+################################################################################
+Organizations:
+  - &OrdererOrg
+    Name: OrdererOrg
+    ID: OrdererMSP
+    MSPDir: crypto-config/ordererOrganizations/hec.edu.pk/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('OrdererMSP.member')"
+      Writers:
+        Type: Signature
+        Rule: "OR('OrdererMSP.member')"
+      Admins:
+        Type: Signature
+        Rule: "OR('OrdererMSP.admin')"
+    OrdererEndpoints:
+      - orderer.hec.edu.pk:7050
+
+  - &HEC
+    Name: HECMSP
+    ID: HECMSP
+    MSPDir: crypto-config/peerOrganizations/hec.edu.pk/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('HECMSP.admin', 'HECMSP.peer', 'HECMSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('HECMSP.admin', 'HECMSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('HECMSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('HECMSP.peer')"
+    AnchorPeers:
+      - Host: peer0.hec.edu.pk
+        Port: 7051
+
+  - &PunjabUniversity
+    Name: PunjabUniversityMSP
+    ID: PunjabUniversityMSP
+    MSPDir: crypto-config/peerOrganizations/pu.edu.pk/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('PunjabUniversityMSP.admin', 'PunjabUniversityMSP.peer', 'PunjabUniversityMSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('PunjabUniversityMSP.admin', 'PunjabUniversityMSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('PunjabUniversityMSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('PunjabUniversityMSP.peer')"
+    AnchorPeers:
+      - Host: peer0.pu.edu.pk
+        Port: 9051
+
+  - &LUMS
+    Name: LUMSMSP
+    ID: LUMSMSP
+    MSPDir: crypto-config/peerOrganizations/lums.edu.pk/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('LUMSMSP.admin', 'LUMSMSP.peer', 'LUMSMSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('LUMSMSP.admin', 'LUMSMSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('LUMSMSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('LUMSMSP.peer')"
+    AnchorPeers:
+      - Host: peer0.lums.edu.pk
+        Port: 11051
+
+################################################################################
+#   CAPABILITIES
+################################################################################
+Capabilities:
+  Channel: &ChannelCapabilities
+    V2_0: true
+  Orderer: &OrdererCapabilities
+    V2_0: true
+  Application: &ApplicationCapabilities
+    V2_0: true
+
+################################################################################
+#   APPLICATION DEFAULTS
+################################################################################
+Application: &ApplicationDefaults
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    LifecycleEndorsement:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Endorsement"
+    Endorsement:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Endorsement"
+  Capabilities:
+    <<: *ApplicationCapabilities
+
+################################################################################
+#   ORDERER DEFAULTS
+################################################################################
+Orderer: &OrdererDefaults
+  OrdererType: etcdraft
+  Addresses:
+    - orderer.hec.edu.pk:7050
+  BatchTimeout: 2s
+  BatchSize:
+    MaxMessageCount: 10
+    AbsoluteMaxBytes: 99 MB
+    PreferredMaxBytes: 512 KB
+  EtcdRaft:
+    Consenters:
+      - Host: orderer.hec.edu.pk
+        Port: 7050
+        ClientTLSCert: crypto-config/ordererOrganizations/hec.edu.pk/orderers/orderer.hec.edu.pk/tls/server.crt
+        ServerTLSCert: crypto-config/ordererOrganizations/hec.edu.pk/orderers/orderer.hec.edu.pk/tls/server.crt
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    BlockValidation:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+  Capabilities:
+    <<: *OrdererCapabilities
+
+################################################################################
+#   CHANNEL DEFAULTS
+################################################################################
+Channel: &ChannelDefaults
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+  Capabilities:
+    <<: *ChannelCapabilities
+
+################################################################################
+#   PROFILES
+################################################################################
+Profiles:
+  # Profile for the system channel genesis block
+  HECOrdererGenesis:
+    <<: *ChannelDefaults
+    Orderer:
+      <<: *OrdererDefaults
+      Organizations:
+        - *OrdererOrg
+    Consortiums:
+      HECConsortium:
+        Organizations:
+          - *HEC
+          - *PunjabUniversity
+          - *LUMS
+
+  # Profile for the degree verification channel
+  DegreeVerificationChannel:
+    Consortium: HECConsortium
+    <<: *ChannelDefaults
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+        - *HEC
+        - *PunjabUniversity
+        - *LUMS
+
+  # Profile for HEC-specific operations channel
+  HECPrivateChannel:
+    Consortium: HECConsortium
+    <<: *ChannelDefaults
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+        - *HEC
